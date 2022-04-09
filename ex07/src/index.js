@@ -25,12 +25,57 @@ var collection = {
 };
 // Keep a copy of the collection for tests
 var oldCollection = JSON.parse(JSON.stringify(collection));
-function updateRecords(object, id, prop, value) {
+
     // Only change code below this line
 
+    function updateRecords(object, id, prop, value) {
+
+        if(object.hasOwnProperty(id)&&prop!=="tracks"){
     
+          if(value){
+    
+            object[id][prop] = value;
+    
+          }else{
+    
+           delete object[id][prop];
+    
+          }
+    
+       }else if(object.hasOwnProperty(id)&&prop==="tracks"){
+    
+         if(value){
+    
+          if(object[id].hasOwnProperty("tracks")){
+    
+            object[id][prop].push(value);
+    
+           }else{
+    
+            object[id][prop] = [];
+    
+            object[id][prop].push(value);
+    
+          }  
+    
+        }else{
+    
+          if(object[id].hasOwnProperty("tracks")){
+    
+           delete object[id][prop];
+    
+          }
+    
+        }
+    
+       }
+    
+       return object;
+    
+     }
+
     // Only change code above this line
-}
-console.log(updateRecords(collection, id, prop, value)); // Change this line
+
+console.log(updateRecords(collection, 2548, "artist", "")); // Change this line
 module.exports = updateRecords;
 
