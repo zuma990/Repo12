@@ -11,8 +11,8 @@ function myNes() {
         }
     };
     // Only change code below this line
-     var gloveBoxContents = "maps";
-    myStorage.car.inside["glove box"] = [gloveBoxContents];
+    var gloveBoxContents = myStorage.car.inside["glove box"]
+    
     return gloveBoxContents;
     
 
